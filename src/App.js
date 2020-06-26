@@ -21,7 +21,22 @@ class App extends Component { // stateful component - manages state
   this.setState({persons: persons});
  }
 
-  nameChangedHandler = (event) => {
+  nameChangedHandler = (event, id) => {
+
+    const personIndex = this.state.persons.findIndex(p => {
+      return p.id === id;
+    });
+
+    const person = {
+      ...this.state.persons[personIndex]
+    };
+
+      person.name = event.target.value;
+      const persons = [...this.state.persons];
+      persons[personIndex] = person;
+
+      this.setState( {persons: persons} )
+
     this.setState({
       persons: [
         { name: 'Nadia', age: 28 },
@@ -52,10 +67,11 @@ class App extends Component { // stateful component - manages state
           <div>
             {this.state.persons.map((person, index) => {
               return <Person 
-              click={() => this.deletePersonHandler(index)}
-              name={person.name} 
-              age={person.age} 
-              key={person.id}/>
+                click={() => this.deletePersonHandler(index)}
+                name={person.name} 
+                age={person.age} 
+                key={person.id}
+                changed={(event) => this.nameChangedHandler(event, person.id)}/>
             })}
           </div> 
         );
