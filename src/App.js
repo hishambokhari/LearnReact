@@ -14,16 +14,11 @@ class App extends Component { // stateful component - manages state
     showPersons: false
   };
 
-  switchNameHandler = (newName) => {
-    // console.log('was clicked');
-    this.setState({
-      persons: [
-      { name: newName, age: 28 },
-      { name: 'Hisham', age: 15 },
-      { name: 'Sayem', age: 32 }
-    ]
-    })
-  };
+ deletePersonHandler = (personIndex) => {
+  const persons = this.state.persons;
+  persons.splice(personIndex, 1);
+  this.setState({persons: persons});
+ }
 
   nameChangedHandler = (event) => {
     this.setState({
@@ -54,18 +49,13 @@ class App extends Component { // stateful component - manages state
       if (this.state.showPersons) {
         persons = (
           <div>
-          <Person 
-          name={this.state.persons[0].name} 
-          age= {this.state.persons[0].age}/>
-          <Person 
-          name={this.state.persons[1].name} 
-          age= {this.state.persons[1].age}
-          click={this.switchNameHandler.bind(this, 'Mahak!!!')}
-          changed={this.nameChangedHandler}>My Hobbies: Racing</Person>
-          <Person 
-          name={this.state.persons[2].name} 
-          age= {this.state.persons[2].age}/>
-        </div> 
+            {this.state.persons.map((person, index) => {
+              return <Person 
+              click={() => this.deletePersonHandler(index)}
+              name={person.name} 
+              age={person.age} />
+            })}
+          </div> 
         );
       }
 
