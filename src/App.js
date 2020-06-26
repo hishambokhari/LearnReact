@@ -6,16 +6,17 @@ import Person from './Person/Person.js';
 class App extends Component { // stateful component - manages state
   state = { // managing component data from within the component
     persons: [
-      { name: 'Max', age: 28 },
-      { name: 'Tom', age: 15 },
-      { name: 'Joe', age: 32 }
+      { id: 'dkm3e',name: 'Max', age: 28 },
+      { id: 'dell4',name: 'Tom', age: 15 },
+      { id: 'dlskw',name: 'Joe', age: 32 }
     ],
     otherState: 'some other value',
     showPersons: false
   };
 
  deletePersonHandler = (personIndex) => {
-  const persons = this.state.persons;
+  // const persons = this.state.persons.slice();
+  const persons = [...this.state.persons];
   persons.splice(personIndex, 1);
   this.setState({persons: persons});
  }
@@ -53,7 +54,8 @@ class App extends Component { // stateful component - manages state
               return <Person 
               click={() => this.deletePersonHandler(index)}
               name={person.name} 
-              age={person.age} />
+              age={person.age} 
+              key={person.id}/>
             })}
           </div> 
         );
