@@ -53,7 +53,8 @@ class App extends Component { // stateful component - manages state
 
     render() {
       const style = {
-        backgroundColor: 'white',
+        backgroundColor: 'green',
+        color: 'white',
         font: 'inherit',
         border: '1px solid blue',
         padding: '8px',
@@ -75,6 +76,8 @@ class App extends Component { // stateful component - manages state
             })}
           </div> 
         );
+
+        style.backgroundColor = 'red';
       }
 
     return (
