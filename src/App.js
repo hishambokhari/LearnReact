@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 
 import Person from './Person/Person.js';
-import Radium from 'radium';
+import Radium, { StyleRoot } from 'radium';
 
 
 
@@ -100,6 +100,7 @@ class App extends Component { // stateful component - manages state
       }
 
     return (
+      <StyleRoot>
       <div className="App">
         <h1>Hi, I'm a React App</h1>  
         <p className={classes.join(' ')}>This is working too</p>
@@ -108,6 +109,7 @@ class App extends Component { // stateful component - manages state
         onClick={this.togglePersonsHandler}>Toggle Persons</button>
         {persons}
       </div>
+      </StyleRoot>
     );
     // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does this work now?'))
     }
