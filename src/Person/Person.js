@@ -1,5 +1,6 @@
 import React from 'react';
 import './Person.css';
+import Radium from 'radium';
 
 // props is the attributes you add to your component
 
@@ -15,4 +16,4 @@ const person = (props) => { //es6 equiv for functions - this is a stateless comp
 };
 
 
-export default person;
+export default Radium(person);

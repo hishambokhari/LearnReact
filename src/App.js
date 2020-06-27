@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
+
 import Person from './Person/Person.js';
+import Radium from 'radium';
+
 
 
 class App extends Component { // stateful component - manages state
@@ -58,7 +61,11 @@ class App extends Component { // stateful component - manages state
         font: 'inherit',
         border: '1px solid blue',
         padding: '8px',
-        cursor: 'pointer'
+        cursor: 'pointer',
+        ':hover': {
+          backgroundColor: 'salmon',
+          color: 'black'
+        }
       };
 
       let persons =  null;
@@ -78,6 +85,10 @@ class App extends Component { // stateful component - manages state
         );
 
         style.backgroundColor = 'red';
+        style[':hover'] = {
+          backgroundColor: 'lightred',
+          color: 'black'
+        };
       }
 
       const classes = [];
@@ -103,7 +114,7 @@ class App extends Component { // stateful component - manages state
   }
 
 
-export default App;
+export default Radium(App);
 
 
 // state = { // managing component data from within the component
