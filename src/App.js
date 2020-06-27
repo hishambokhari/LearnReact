@@ -2,21 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 
 import Person from './Person/Person.js';
-import styled from 'styled-components';
 
-const StyledButton = styled.button`
-  background-color: ${props => props.alt ? 'red' : 'green'};
-  color: white;
-  font: inherit;
-  border: 1px solid blue;
-  padding: 8px;
-  cursor: pointer;
 
-  &:hover {
-    background-color: ${props => props.alt ? 'salmon' : 'loghtgreen'};
-    color: black
-  }
-`;
+
 
 class App extends Component { // stateful component - manages state
   state = { // managing component data from within the component
@@ -67,18 +55,18 @@ class App extends Component { // stateful component - manages state
     }
 
     render() {
-      const style = {
-        backgroundColor: 'green',
-        color: 'white',
-        font: 'inherit',
-        border: '1px solid blue',
-        padding: '8px',
-        cursor: 'pointer',
-        ':hover': {
-          backgroundColor: 'salmon',
-          color: 'black'
-        }
-      };
+      // const style = {
+      //   backgroundColor: 'green',
+      //   color: 'white',
+      //   font: 'inherit',
+      //   border: '1px solid blue',
+      //   padding: '8px',
+      //   cursor: 'pointer',
+      //   ':hover': {
+      //     backgroundColor: 'salmon',
+      //     color: 'black'
+      //   }
+      // };
 
       let persons =  null;
 
@@ -116,9 +104,9 @@ class App extends Component { // stateful component - manages state
       <div className="App">
         <h1>Hi, I'm a React App</h1>  
         <p className={classes.join(' ')}>This is working too</p>
-        <StyledButton alt={this.state.showPersons}onClick={this.togglePersonsHandler}>
+        <button className="button" onClick={this.togglePersonsHandler}>
           Toggle Persons
-        </StyledButton>
+        </button>
         {persons}
       </div>
       
