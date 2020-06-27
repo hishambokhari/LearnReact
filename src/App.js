@@ -5,7 +5,7 @@ import Person from './Person/Person.js';
 import styled from 'styled-components';
 
 const StyledButton = styled.button`
-  background-color: green;
+  background-color: ${props => props.alt ? 'red' : 'green'};
   color: white;
   font: inherit;
   border: 1px solid blue;
@@ -13,10 +13,10 @@ const StyledButton = styled.button`
   cursor: pointer;
 
   &:hover {
-    background-color: lightgreen;
+    background-color: ${props => props.alt ? 'salmon' : 'loghtgreen'};
     color: black
   }
-`
+`;
 
 class App extends Component { // stateful component - manages state
   state = { // managing component data from within the component
@@ -96,11 +96,11 @@ class App extends Component { // stateful component - manages state
           </div> 
         );
 
-        style.backgroundColor = 'red';
-        style[':hover'] = {
-          backgroundColor: 'lightred',
-          color: 'black'
-        };
+        // style.backgroundColor = 'red';
+        // style[':hover'] = {
+        //   backgroundColor: 'lightred',
+        //   color: 'black'
+        // };
       }
 
       const classes = [];
@@ -116,7 +116,7 @@ class App extends Component { // stateful component - manages state
       <div className="App">
         <h1>Hi, I'm a React App</h1>  
         <p className={classes.join(' ')}>This is working too</p>
-        <StyledButton onClick={this.togglePersonsHandler}>
+        <StyledButton alt={this.state.showPersons}onClick={this.togglePersonsHandler}>
           Toggle Persons
         </StyledButton>
         {persons}
