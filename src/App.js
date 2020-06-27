@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-
+import classes from './App.css';
 import Person from './Person/Person.js';
 
 
@@ -91,20 +91,20 @@ class App extends Component { // stateful component - manages state
         // };
       }
 
-      const classes = [];
+      const assignedClasses = [];
       if(this.state.persons.length <= 2){
-        classes.push('red'); // classes will be red
+        assignedClasses.push(classes.red); // classes will be red
       }
       if (this.state.persons.length <= 1){
-        classes.push('bold');// classes is red and bold
+        assignedClasses.push(classes.bold);// classes is red and bold
       }
 
     return (
       
-      <div className="App">
+      <div className={classes.App}>
         <h1>Hi, I'm a React App</h1>  
-        <p className={classes.join(' ')}>This is working too</p>
-        <button className="button" onClick={this.togglePersonsHandler}>
+        <p className={assignedClasses.join(' ')}>This is working too</p>
+        <button className={classes.Button} onClick={this.togglePersonsHandler}>
           Toggle Persons
         </button>
         {persons}
