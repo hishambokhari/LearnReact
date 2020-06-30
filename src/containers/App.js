@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import classes from './App.css';
-import Person from '../components/Persons/Person/Person.js';
+import Persons from '../components/Persons/Persons'
 
 
 
@@ -55,41 +55,29 @@ class App extends Component { // stateful component - manages state
     }
 
     render() {
-      // const style = {
-      //   backgroundColor: 'green',
-      //   color: 'white',
-      //   font: 'inherit',
-      //   border: '1px solid blue',
-      //   padding: '8px',
-      //   cursor: 'pointer',
-      //   ':hover': {
-      //     backgroundColor: 'salmon',
-      //     color: 'black'
-      //   }
-      // };
+     
 
       let persons =  null;
+      let btnClass = [classes.Button];
 
       if (this.state.showPersons) {
         persons = (
           <div>
-            {this.state.persons.map((person, index) => {
-              return <Person 
-                click={() => this.deletePersonHandler(index)}
-                name={person.name} 
-                age={person.age} 
-                key={person.id}
-                changed={(event) => this.nameChangedHandler(event, person.id)}/>
-            })}
+           <Persons 
+           persons={this.state.persons}
+           clicked={this.deletePersonHandler}
+           changed={this.nameChangedHandler}/>
           </div> 
         );
 
         // style.backgroundColor = 'red';
         // style[':hover'] = {
-        //   backgroundColor: 'lightred',
+        //   backgroundColor: 'salmon',
         //   color: 'black'
         // };
+        btnClass.push(classes.Red);
       }
+
 
       const assignedClasses = [];
       if(this.state.persons.length <= 2){
@@ -104,7 +92,7 @@ class App extends Component { // stateful component - manages state
       <div className={classes.App}>
         <h1>Hi, I'm a React App</h1>  
         <p className={assignedClasses.join(' ')}>This is working too</p>
-        <button className={classes.Button} onClick={this.togglePersonsHandler}>
+        <button className={btnClass.join(' ')} onClick={this.togglePersonsHandler}>
           Toggle Persons
         </button>
         {persons}
