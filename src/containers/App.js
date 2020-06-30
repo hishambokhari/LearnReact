@@ -58,7 +58,7 @@ class App extends Component { // stateful component - manages state
      
 
       let persons =  null;
-      let btnClass = [classes.Button];
+      let btnClass = '';
 
       if (this.state.showPersons) {
         persons = (
@@ -75,7 +75,7 @@ class App extends Component { // stateful component - manages state
         //   backgroundColor: 'salmon',
         //   color: 'black'
         // };
-        btnClass.push(classes.Red);
+        btnClass = classes.Red;
       }
 
 
@@ -92,7 +92,7 @@ class App extends Component { // stateful component - manages state
       <div className={classes.App}>
         <h1>Hi, I'm a React App</h1>  
         <p className={assignedClasses.join(' ')}>This is working too</p>
-        <button className={btnClass.join(' ')} onClick={this.togglePersonsHandler}>
+        <button className={btnClass} onClick={this.togglePersonsHandler}>
           Toggle Persons
         </button>
         {persons}
